@@ -1,14 +1,35 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div class="app">
+    <div class="header">
+      <Header></Header>
+    </div>
+
+    <div class="page"></div>
+    <router-view :drinks="drinks"></router-view>
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header'
+
 export default {
-  name: 'App'
+  components: {
+    Header
+  },
+  name: 'app',
+
+  data() {
+    return {
+      // Stub out for async call stub
+      drinks: ['D1', 'D2', 'D3']
+    }
+
+  }
 }
+
+
+
+
 </script>
 
 <style>
