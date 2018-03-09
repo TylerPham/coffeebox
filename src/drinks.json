@@ -1,0 +1,108 @@
+{
+    "drinks": [
+        {
+            "id":1,
+            "name": "Cappaccino",
+            "type": "coffee",
+            "price": 2.99,
+            "src": "@/assets/coffee.jpg",
+            "description": "A delicious cappaccino to start your day off",
+            "modifiers": [
+                {
+                "name": "Cream",
+                "price": 0.5
+                },
+                {
+                "name": "Sugar",
+                "price": 0.5
+                }
+            ],
+            "ingredients": ["water", "expresso", "milk"]
+        },
+
+        {
+            "id":2,
+            "name": "Americano",
+            "type": "coffee",
+            "price": 2.99,
+            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "description": "Standard americano, for your standard person",
+            "modifiers": [
+                {
+                "name": "Milk",
+                "price": 0.5
+                },
+                {
+                "name": "Sugar",
+                "price": 0.5
+                }
+            ],
+            "ingredients": ["water", "expresso", "milk"]
+        },
+
+        {
+            "id":3,
+            "name": "Expresso",
+            "type": "coffee",
+            "price": 1.99,
+            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "description": "When you need a little boost",
+
+            "modifiers": [
+                {
+                "name": "Milk",
+                "price": 0.5
+                },
+                {
+                "name": "Sugar",
+                "price": 0.5
+                }
+            ],
+            "ingredients": ["water", "expresso"]
+        },
+
+        {
+            "id":4,
+            "name": "Latte",
+            "type": "coffee",
+            "price": 3.99,
+            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "description": "You will like me a latte!",
+            "modifiers": [
+                {
+                "name": "Milk",
+                "price": 0.5
+                },
+                {
+                "name": "Sugar",
+                "price": 0.5
+                }
+            ],
+            "ingredients": ["water", "expresso", "milk"]
+        },
+
+        {
+            "id":5,
+            "name": "Green Tea",
+            "type": "tea",
+            "price": 1.99,
+            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "description": "Start off strong, start off green",
+            "modifiers": [
+                {
+                "name": "Milk",
+                "price": 0.5
+                },
+                {
+                "name": "Sugar",
+                "price": 0.5
+                }
+            ],
+            "ingredients": ["water", "tea leaves"]
+        }
+
+
+
+
+    ]
+}

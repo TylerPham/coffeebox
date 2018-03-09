@@ -7,12 +7,15 @@ import ProductPage from '@/pages/ProductPage'
 
 Vue.use(Router)
 
+var truth = {}
+
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomePage
+      component: HomePage,
+      data: []
     },
     {
       path: '/cart',
