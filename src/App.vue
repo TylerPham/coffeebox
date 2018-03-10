@@ -2,13 +2,17 @@
 
   <div class="app">
     <div class="header">
-      <Header></Header>
+      <Header
+      :cart="cart"
+      ></Header>
     </div>
 
     <div class="page"></div>
     <router-view 
     :drinks="drinks"
-    :test="test"
+    :cart="cart"
+
+    v-on:addDrinkToCart="addDrinkToCart"
     >
     
     </router-view>
@@ -19,6 +23,9 @@
 
 <script>
 import Header from '@/components/Header'
+import HomePage from '@/pages/HomePage'
+import CartPage from '@/pages/CartPage'
+
 const drinks = require("/home/tyler/documents/coffeebox/src/drinks.json") //change to async call after
 
 export default {
@@ -31,16 +38,33 @@ export default {
     return {
       // Stub out for async call stub
       drinks,
-      cart: [''],
+      cart: [],
       subtotal: null
     }
   },
-    methods: {
-        test(){
-            console.log("parent")
-        }
+
+  components: {
+    Header,
+    HomePage,
+    CartPage
+  },
+
+  methods: {
+    addDrinkToCart(drink) {
+      this.$data.cart.push(drink)
+      // console.log(this.$data.cart)
+    },
+    getDrinksList() {
+      drink = require("/home/tyler/documents/coffeebox/src/drinks.json") //change to async call after
+
     }
+  },
+  created() {
+    // console.log("started")
+    // this.getDrinksList();
+  }
 }
+
 </script>
 
 

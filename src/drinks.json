@@ -5,16 +5,18 @@
             "name": "Cappaccino",
             "type": "coffee",
             "price": 2.99,
-            "src": "@/assets/coffee.jpg",
+            "src": "/assets/coffee.jpg",
             "description": "A delicious cappaccino to start your day off",
             "modifiers": [
                 {
                 "name": "Cream",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 },
                 {
                 "name": "Sugar",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 }
             ],
             "ingredients": ["water", "expresso", "milk"]
@@ -30,11 +32,13 @@
             "modifiers": [
                 {
                 "name": "Milk",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 },
                 {
                 "name": "Sugar",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 }
             ],
             "ingredients": ["water", "expresso", "milk"]
@@ -51,11 +55,13 @@
             "modifiers": [
                 {
                 "name": "Milk",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 },
                 {
                 "name": "Sugar",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 }
             ],
             "ingredients": ["water", "expresso"]
@@ -71,11 +77,13 @@
             "modifiers": [
                 {
                 "name": "Milk",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 },
                 {
                 "name": "Sugar",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 }
             ],
             "ingredients": ["water", "expresso", "milk"]
@@ -91,11 +99,13 @@
             "modifiers": [
                 {
                 "name": "Milk",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 },
                 {
                 "name": "Sugar",
-                "price": 0.5
+                "price": 0.5,
+                "quantity": 0
                 }
             ],
             "ingredients": ["water", "tea leaves"]
