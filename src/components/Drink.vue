@@ -11,6 +11,7 @@
 
         <b-container fluid>
           <h6>Drink Options</h6>
+
             <b-row class="my-1" v-for="modifier in drink.modifiers">
 
         <b-col sm="3">

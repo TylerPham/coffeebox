@@ -5,7 +5,7 @@
             "name": "Cappaccino",
             "type": "coffee",
             "price": 2.99,
-            "src": "/assets/coffee.jpg",
+            "src": "./assets/coffee.jpg",
             "description": "A delicious cappaccino to start your day off",
             "modifiers": [
                 {
