@@ -36,10 +36,10 @@
     </table>
   </b-row>
 
-  <b-button class="float-right mx-2" v-on:click="">
+  <b-button class="float-right mx-2" v-on:click="toast">
     Checkout
   </b-button>
-  <b-button class="float-right mx-2" v-on:click="">
+  <b-button class="float-right mx-2" v-on:click="clearCart">
     Cancel
   </b-button>
 
@@ -82,6 +82,13 @@ export default {
     });
 
     return modifierString
+  },
+  clearCart(){
+          this.$emit("clearCart");
+  },
+  toast(){
+    console.log("toasting")
+    $vm.$toast("test")
   }
   },
 

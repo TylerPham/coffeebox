@@ -11,7 +11,7 @@
     <router-view 
     :drinks="drinks"
     :cart="cart"
-
+    v-on:clearCart="clearCart"
     v-on:addDrinkToCart="addDrinkToCart"
     >
     
@@ -25,6 +25,7 @@
 import Header from '@/components/Header'
 import HomePage from '@/pages/HomePage'
 import CartPage from '@/pages/CartPage'
+import Vue from 'vue'
 
 const drinks = require("/home/tyler/documents/coffeebox/src/drinks.json") //change to async call after
 
@@ -52,11 +53,19 @@ export default {
   methods: {
     addDrinkToCart(drink) {
       this.$data.cart.push(drink)
-      // console.log(this.$data.cart)
+      Vue.toast(drink.name + " added to your cart" , {
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        duration: '1500',
+        transition: 'slide-up'
+      })
+// console.log(this.$data.cart)
     },
     getDrinksList() {
       drink = require("/home/tyler/documents/coffeebox/src/drinks.json") //change to async call after
-
+    },
+    clearCart(){
+      this.$data.cart = []
     }
   },
   created() {

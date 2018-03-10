@@ -107,6 +107,8 @@ components: {
 
             const modifier = {name, price, quantity}
             cartDrink.modifiers.push(modifier)
+            //reset the form after submitting
+            drink.modifiers[i].quantity = 0
         }
       }
       //callback to parent to add the drink to the cart state
