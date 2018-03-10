@@ -70,7 +70,7 @@ export default {
       drink.modifiers.forEach(function(modifier){
         subtotal += modifier.price * modifier.quantity;
       });
-    return subtotal
+    return (subtotal).toFixed(2)
     },
  
   showModifiers(drink){
@@ -106,7 +106,7 @@ export default {
         })
       })
         // console.log(subTotal)
-        return subTotal
+        return (subTotal).toFixed(2)
     },
 
     tax(){
