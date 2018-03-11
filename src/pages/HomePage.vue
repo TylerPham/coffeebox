@@ -6,14 +6,23 @@
     <div v-for="drink in drinks.drinks" class="col-xs-12 col-sm-6" v-bind:key="drink.id">
       <b-card>
         <b-media>
-          <img class="drink-pic" src="../assets/logo.png" slot="aside">
+          <!-- <img class="drink-pic" src="@/assets/logo.png" slot="aside"> -->
+          <!-- <img class="drink-pic" :src="require('@/assets/coffee.jpg')" slot="aside"> -->
+          <b-img 
+          thumbnail 
+          class="drink-pic" 
+          :src="drink.src" 
+          alt="../assets/logo.png"
+          slot="aside"
+          ></b-img>
+          
           <h5 class="mt-0">{{drink.name}} </h5>
           <h6>${{drink.price}}</h6>
           <p>{{drink.description}}
           </p>
         </b-media>
 
-        <b-container fluid>
+        <b-container fluid class="my-3">
           <h6>Drink Options</h6>
             <b-row class="my-1" v-for="modifier in drink.modifiers">
 
@@ -91,14 +100,19 @@ components: {
       //callback to parent to add the drink to the cart state
       this.$emit("addDrinkToCart", cartDrink);
     },
+
+    getPic(drink){
+      console.log(drink.src)
+      // require("@" + drink.src + ".jpg")
+    }
   }
 }
 </script>
 
 <style>
 .drink-pic {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 }
 
 fieldset {

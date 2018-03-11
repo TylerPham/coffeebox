@@ -30,9 +30,20 @@
     </table>
   </b-row>
 
-  <b-btn class="float-right mx-2" v-b-modal.paymentModal v-on:click="clearCart">
+  <b-btn 
+  class="float-right mx-2" 
+  v-b-modal.paymentModal 
+  v-on:click="clearCart"
+  v-if="itemCount > 0">
     Checkout
   </b-btn>
+  <b-btn 
+  type="button" 
+  class="float-right mx-2" 
+  disabled
+  v-else>
+  Checkout</b-btn>
+
   <b-btn class="float-right mx-2" v-on:click="clearCart">
     Cancel
   </b-btn>

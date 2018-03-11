@@ -5,7 +5,7 @@
             "name": "Cappaccino",
             "type": "coffee",
             "price": 2.99,
-            "src": "./assets/coffee.jpg",
+            "src": "//upload.wikimedia.org/wikipedia/commons/thumb/1/16/Classic_Cappuccino.jpg/220px-Classic_Cappuccino.jpg",
             "description": "A delicious cappaccino to start your day off",
             "modifiers": [
                 {
@@ -27,7 +27,7 @@
             "name": "Americano",
             "type": "coffee",
             "price": 2.99,
-            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "src": "https://delhilivelondon.com/wp-content/uploads/2016/09/Americano-2-600x450.jpg",
             "description": "Standard americano, for your standard person",
             "modifiers": [
                 {
@@ -49,7 +49,7 @@
             "name": "Expresso",
             "type": "coffee",
             "price": 1.99,
-            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "src": "https://pbs.twimg.com/profile_images/439843200589508608/4OkxePlc_400x400.jpeg",
             "description": "When you need a little boost",
 
             "modifiers": [
@@ -72,7 +72,7 @@
             "name": "Latte",
             "type": "coffee",
             "price": 3.99,
-            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "src": "https://media.istockphoto.com/photos/hot-latte-coffee-on-old-wooden-table-with-brownie-cake-picture-id502048034?k=6&m=502048034&s=612x612&w=0&h=69CKu6T7sn0eo_DGaxOnAMI901KNcNlmeJc3b-MEfug=",
             "description": "You will like me a latte!",
             "modifiers": [
                 {
@@ -94,7 +94,7 @@
             "name": "Green Tea",
             "type": "tea",
             "price": 1.99,
-            "src": "/home/tyler/documents/coffeebox/src/assets/coffee.jpg",
+            "src": "https://www.rd.com/wp-content/uploads/2017/09/I-Traded-Coffee-for-Green-Tea-for-a-Week%E2%80%94Heres-What-Happened_120114397-Liv-friis-larsen-760x506.jpg",
             "description": "Start off strong, start off green",
             "modifiers": [
                 {
