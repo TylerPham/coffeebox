@@ -30,16 +30,16 @@
     </table>
   </b-row>
 
-  <b-btn 
-  class="float-right mx-2" 
-  v-b-modal.paymentModal 
+  <b-btn
+  class="float-right mx-2"
+  v-b-modal.paymentModal
   v-on:click="clearCart"
   v-if="itemCount > 0">
     Checkout
   </b-btn>
-  <b-btn 
-  type="button" 
-  class="float-right mx-2" 
+  <b-btn
+  type="button"
+  class="float-right mx-2"
   disabled
   v-else>
   Checkout</b-btn>
@@ -55,86 +55,81 @@
   </b-modal>
 
 </b-container>
-
-
 </template>
-
 
 <script>
 export default {
-    props: {
-      drinks: {
-          type: Object,
-          default: () => []
-      },
-      cart: {
-        type: Array,
-        default: () => []
-      }
+  props: {
+    drinks: {
+      type: Object,
+      default: () => []
+    },
+    cart: {
+      type: Array,
+      default: () => []
+    }
   },
 
-  methods:{
-      // calculate the individual drink's subtotal
-      drinkSubTotal(drink){
-        let subtotal = drink.price
-        drink.modifiers.forEach(function(modifier){
-          subtotal += modifier.price * modifier.quantity;
-        });
+  methods: {
+    // calculate the individual drink's subtotal
+    drinkSubTotal (drink) {
+      let subtotal = drink.price
+      drink.modifiers.forEach(function (modifier) {
+        subtotal += modifier.price * modifier.quantity
+      })
       return (subtotal).toFixed(2)
-      },
-  
+    },
     // format a string to display all of a drink's chosen modifiers
-    showModifiers(drink){
-      let modifierString = ""
+    showModifiers (drink) {
+      let modifierString = ''
       drink.modifiers.forEach(modifier => {
-        if (modifier.quantity > 0){
-          modifierString += " + " + modifier.quantity + "x" + modifier.name
+        if (modifier.quantity > 0) {
+          modifierString += ' + ' + modifier.quantity + 'x' + modifier.name
         }
-      });
+      })
 
       return modifierString
     },
 
     // callback function to clear the cart
-    clearCart(){
-            this.$emit("clearCart");
+    clearCart () {
+      this.$emit('clearCart')
     },
 
     // callback function to remove item at specified index
-    removeItem(index){
-      this.$emit("removeItem", index);
+    removeItem (index) {
+      this.$emit('removeItem', index)
     }
   },
 
   computed: {
-    //number of items in cart
-    itemCount(){
+    // number of items in cart
+    itemCount () {
       return this.cart.length
     },
 
-    //subtotal of all items in cart
-    subTotal(){
+    // subtotal of all items in cart
+    subTotal () {
       let subTotal = 0
-      this.cart.forEach(function(drink){
+      this.cart.forEach(function (drink) {
         subTotal += drink.price
-        drink.modifiers.forEach(function(modifier){
+        drink.modifiers.forEach(function (modifier) {
           subTotal += (modifier.price * modifier.quantity)
         })
       })
-        return (subTotal).toFixed(2)
+      return (subTotal).toFixed(2)
     },
 
-    //calculate the amount of tax from subtotal
-    tax(){
+    // calculate the amount of tax from subtotal
+    tax () {
       return (this.subTotal * 1.14 - this.subTotal).toFixed(2)
     },
 
-    //calculate the total amount of the order
-    totalPrice(){
+    // calculate the total amount of the order
+    totalPrice () {
       let total = parseFloat(this.subTotal) + parseFloat(this.tax)
       return total.toFixed(2)
-    },
-
+    }
   }
 }
 </script>

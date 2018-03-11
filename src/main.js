@@ -7,15 +7,11 @@ import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 import Toast from 'vue-easy-toast'
 
-// import Vuetify from 'vuetify'
-// import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(Toast)
-
-// Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 

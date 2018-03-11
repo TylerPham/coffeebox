@@ -7,8 +7,6 @@ import ProductPage from '@/pages/ProductPage'
 
 Vue.use(Router)
 
-var truth = {}
-
 export default new Router({
   routes: [
     {

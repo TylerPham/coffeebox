@@ -59,11 +59,9 @@
 </template>
 
 <script>
-import Drink from '@/components/Drink.vue'
 
 export default {
 components: {
-    Drink
   },
   props: {
     drinks: {
