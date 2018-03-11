@@ -1,5 +1,5 @@
 <template>
-<b-container fluid>
+<b-container text-center xs-6>
   <h1>My Order</h1>
   <b-row xs="12">
 
@@ -8,42 +8,40 @@
         <tr>
           <th>Drink and modifiers</th>
           <th>Price</th>
+          <th class="text-right" >Remove Item</th>
         </tr>
       </thead>
 
-      <!-- loop here -->
-      <!-- <tr>
-        <td>drink 1</td>
-        <td>drink 1</td>
-        <td>drink 1</td>
-      </tr> -->
-      <tr v-for="item in cart">
+      <tr v-for="(item, index) in cart">
         <td>{{item.name}} {{showModifiers(item)}}</td>
         <td>{{drinkSubTotal(item)}}</td>
+        <td><b-btn-close v-on:click="removeItem(index)"></b-btn-close></td>
       </tr>
 
-
-
       <tr>
+        <td></td>
         <td></td>
         <td>
           <h4>Subtotal: ${{subTotal}}</h4>
           <h4>Tax: ${{tax}}</h4>
           <h4>Total: ${{totalPrice}}</h4>
-
         </td>
       </tr>
     </table>
   </b-row>
 
-  <b-button class="float-right mx-2" v-on:click="toast">
+  <b-btn class="float-right mx-2" v-b-modal.paymentModal v-on:click="clearCart">
     Checkout
-  </b-button>
-  <b-button class="float-right mx-2" v-on:click="clearCart">
+  </b-btn>
+  <b-btn class="float-right mx-2" v-on:click="clearCart">
     Cancel
-  </b-button>
+  </b-btn>
 
-
+  <!-- Payment Modal-->
+  <b-modal id="paymentModal" title="Your Order has been Processed">
+    <p class="my-4">Thank you for your order!</p>
+    <b-link to="/">Back to menu</b-link>
+  </b-modal>
 
 </b-container>
 
@@ -65,38 +63,45 @@ export default {
   },
 
   methods:{
-    drinkSubTotal(drink){
-      let subtotal = drink.price
-      drink.modifiers.forEach(function(modifier){
-        subtotal += modifier.price * modifier.quantity;
+      // calculate the individual drink's subtotal
+      drinkSubTotal(drink){
+        let subtotal = drink.price
+        drink.modifiers.forEach(function(modifier){
+          subtotal += modifier.price * modifier.quantity;
+        });
+      return (subtotal).toFixed(2)
+      },
+  
+    // format a string to display all of a drink's chosen modifiers
+    showModifiers(drink){
+      let modifierString = ""
+      drink.modifiers.forEach(modifier => {
+        if (modifier.quantity > 0){
+          modifierString += " + " + modifier.quantity + "x" + modifier.name
+        }
       });
-    return (subtotal).toFixed(2)
-    },
- 
-  showModifiers(drink){
-    let modifierString = ""
-    drink.modifiers.forEach(modifier => {
-      if (modifier.quantity > 0){
-        modifierString += " + " + modifier.quantity + "x" + modifier.name
-      }
-    });
 
-    return modifierString
-  },
-  clearCart(){
-          this.$emit("clearCart");
-  },
-  toast(){
-    console.log("toasting")
-    $vm.$toast("test")
-  }
+      return modifierString
+    },
+
+    // callback function to clear the cart
+    clearCart(){
+            this.$emit("clearCart");
+    },
+
+    // callback function to remove item at specified index
+    removeItem(index){
+      this.$emit("removeItem", index);
+    }
   },
 
   computed: {
+    //number of items in cart
     itemCount(){
       return this.cart.length
     },
 
+    //subtotal of all items in cart
     subTotal(){
       let subTotal = 0
       this.cart.forEach(function(drink){
@@ -105,16 +110,17 @@ export default {
           subTotal += (modifier.price * modifier.quantity)
         })
       })
-        // console.log(subTotal)
         return (subTotal).toFixed(2)
     },
 
+    //calculate the amount of tax from subtotal
     tax(){
       return (this.subTotal * 1.14 - this.subTotal).toFixed(2)
     },
 
+    //calculate the total amount of the order
     totalPrice(){
-      let total = this.subTotal * 1.14
+      let total = parseFloat(this.subTotal) + parseFloat(this.tax)
       return total.toFixed(2)
     },
 

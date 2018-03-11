@@ -13,6 +13,7 @@
     :cart="cart"
     v-on:clearCart="clearCart"
     v-on:addDrinkToCart="addDrinkToCart"
+    v-on:removeItem="removeItem"
     >
     
     </router-view>
@@ -27,6 +28,7 @@ import HomePage from '@/pages/HomePage'
 import CartPage from '@/pages/CartPage'
 import Vue from 'vue'
 
+ 
 const drinks = require("/home/tyler/documents/coffeebox/src/drinks.json") //change to async call after
 
 export default {
@@ -57,21 +59,28 @@ export default {
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
         duration: '1500',
-        transition: 'slide-up'
+        transition: 'fade',
+        className: 'et-info'
       })
-// console.log(this.$data.cart)
     },
+
     getDrinksList() {
       drink = require("/home/tyler/documents/coffeebox/src/drinks.json") //change to async call after
+      return drink
     },
+
     clearCart(){
       this.$data.cart = []
+    },
+
+    removeItem(index){
+      if(index > -1){
+        this.$data.cart.splice(index, 1)
+      }
     }
   },
-  created() {
-    // console.log("started")
-    // this.getDrinksList();
-  }
+
+
 }
 
 </script>

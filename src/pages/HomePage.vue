@@ -1,34 +1,12 @@
 <template>
 <div class="home-page">
-  <h1>HomePage.vue</h1>
+  <h1 class="text-center p-3">Drinks</h1>
 
   <div id="drinkgrid" class="row row-content">
     <div v-for="drink in drinks.drinks" class="col-xs-12 col-sm-6" v-bind:key="drink.id">
-
-<!--
-<div class="media">
-                    <div id="img" class="media-left media-middle">
-                            <img class="media-object img-thumbnail" v-bind:src="'./src/'+drink.src">
-                            <img class="media-object img-thumbnail" src="../assets/logo.png">  
-                    </div>
-                    <div class="media-body">
-                        <h3 id="dName" class="media-heading">{{drink.name}} <span id="dPrice" class="badge">${{drink.price }}</span></h3>
-                        <div v-for="modifier in drink.modifiers" style="margin-bottom: 5px">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="modifier" value="" v-model="modifier.select">
-                                <strong id="mName">{{modifier.name}}   </strong><span id="mPrice" class="badge"> ${{ modifier.price }}</span>
-                            </label>
-                        </div>
-                        <p><a class="btn btn-success btn-s" @click="addDrinkToCart(drink)">Add to Order</a></p>
-                    </div>
-</div>
-
--->
-
       <b-card>
         <b-media>
-          <img src="../assets/logo.png" slot="aside" height="100" width="100">
-          <!-- <b-img img-src="'../assets/logo.png'" slot="aside" blank blank-color="#ccc" width="100" alt="" /> -->
+          <img class="drink-pic" src="../assets/logo.png" slot="aside">
           <h5 class="mt-0">{{drink.name}} </h5>
           <h6>${{drink.price}}</h6>
           <p>{{drink.description}}
@@ -46,7 +24,7 @@
         </b-col>
 
         <b-col sm="9">
-            <b-form-input 
+            <b-form-input
             :type="'number'"
             :placeholder="'0'"
             name="modifier"
@@ -58,7 +36,6 @@
         </b-row>
         </b-container>
 
-
         <b-container fluid>
           <b-button class=float-right v-on:click="addDrinkToCart(drink)">
             Add to Cart
@@ -69,7 +46,6 @@
     </div>
   </div>
 </div>
-
 
 </template>
 
@@ -92,6 +68,7 @@ components: {
   },
 
   methods: {
+    //callback function to create drink object with selected modifiers to add to the cart
     addDrinkToCart(drink) {
 
       let cartDrink = {}
