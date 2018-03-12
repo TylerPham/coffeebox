@@ -24,7 +24,7 @@
 
         <b-container fluid class="my-3">
           <h6>Drink Options</h6>
-            <b-row class="my-1" v-for="modifier in drink.modifiers">
+            <b-row class="my-1" v-for="(modifier, index) in drink.modifiers" v-bind:key="index">
 
         <b-col sm="3">
             <label>

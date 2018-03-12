@@ -12,7 +12,7 @@
         </tr>
       </thead>
 
-      <tr v-for="(item, index) in cart">
+      <tr v-for="(item, index) in cart" v-bind:key="index">
         <td>{{item.name}} {{showModifiers(item)}}</td>
         <td>{{drinkSubTotal(item)}}</td>
         <td><b-btn-close v-on:click="removeItem(index)"></b-btn-close></td>
