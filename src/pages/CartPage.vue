@@ -9,6 +9,7 @@
           <th>Drink and modifiers</th>
           <th>Price</th>
           <th class="text-right" >Remove Item</th>
+          <!-- <th class="text-right">QTY</th> -->
         </tr>
       </thead>
 
@@ -16,12 +17,23 @@
         <td>{{item.name}} {{showModifiers(item)}}</td>
         <td>{{drinkSubTotal(item)}}</td>
         <td><b-btn-close v-on:click="removeItem(index)"></b-btn-close></td>
+
+        <!-- <td class="text-right">
+            <b-form-input
+            :type="'number'"
+            :placeholder="drinkQuantity(item).toString()"
+            name=""
+            min = "0"
+            >
+            </b-form-input>
+        </td> -->
       </tr>
 
       <tr>
         <td></td>
+        <!-- <td></td> -->
         <td></td>
-        <td>
+        <td class="text-right">
           <h4>Subtotal: ${{subTotal}}</h4>
           <h4>Tax: ${{tax}}</h4>
           <h4>Total: ${{totalPrice}}</h4>
@@ -30,22 +42,23 @@
     </table>
   </b-row>
 
-  <b-btn
+  <b-button
   class="float-right mx-2"
+  variant="info"
   v-b-modal.paymentModal
   v-on:click="clearCart"
   v-if="itemCount > 0">
     Checkout
-  </b-btn>
-  <b-btn
+  </b-button>
+  <b-button
   type="button"
   class="float-right mx-2"
   disabled
   v-else>
-  Checkout</b-btn>
+  Checkout</b-button>
 
   <b-btn class="float-right mx-2" v-on:click="clearCart">
-    Cancel
+    Clear Cart
   </b-btn>
 
   <!-- Payment Modal-->
@@ -99,6 +112,31 @@ export default {
     // callback function to remove item at specified index
     removeItem (index) {
       this.$emit('removeItem', index)
+    },
+
+    drinkQuantity (drink) {
+      let drinkCount = 0
+      this.cart.forEach((item) => {
+        if (this.isObjectEqual(drink, item)) {
+          drinkCount += 1
+        }
+      })
+      return drinkCount
+    },
+
+    isObjectEqual (a, b) {
+      if (a.name !== b.name) {
+        return false
+      }
+
+      if (a.price !== b.price) {
+        return false
+      }
+      if (JSON.stringify(a.modifiers) !== JSON.stringify(b.modifiers)) {
+        return false
+      }
+
+      return true
     }
   },
 
